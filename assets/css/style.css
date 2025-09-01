@@ -1,0 +1,327 @@
+/* ===== القاعدة العامة ===== */
+body {
+  font-family: 'Cairo', sans-serif;
+  background: #0d1117;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #161b22;
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #1e6f8c;
+  box-shadow: 0 0 20px rgba(30, 111, 140, 0.5);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #1E6F8C;
+  text-shadow: 0 0 15px rgba(30, 111, 140, 0.7);
+}
+
+nav a {
+  margin: 0 10px;
+  color: #aaa;
+  text-decoration: none;
+  transition: 0.3s;
+}
+nav a:hover {
+  color: #CFAE70;
+  text-shadow: 0 0 10px rgba(207, 174, 112, 0.8);
+}
+
+.hero {
+  text-align: center;
+  padding: 40px;
+}
+
+.filters {
+  text-align: center;
+  padding: 15px;
+}
+.filters input, .filters select, .filters button {
+  padding: 8px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+}
+.filters button {
+  background: #1E6F8C;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(30,111,140,0.7);
+  transition: 0.3s;
+}
+.filters button:hover {
+  background: #CFAE70;
+  box-shadow: 0 0 20px rgba(207,174,112,0.8);
+}
+
+/* ===== الكروسات + الملازم (كروت) ===== */
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: #161b22;
+  border-radius: 12px;
+  padding: 15px;
+  width: 250px;
+  text-align: center;
+  color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 15px rgba(30,111,140,0.3);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 0 25px rgba(207,174,112,0.8);
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.card button {
+  background: #1E6F8C;
+  border: none;
+  padding: 8px 15px;
+  margin-top: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.3s;
+  box-shadow: 0 0 15px rgba(30,111,140,0.7);
+}
+.card button:hover {
+  background: #CFAE70;
+  box-shadow: 0 0 20px rgba(207,174,112,0.8);
+}
+
+/* ===== أنيميشن ظهور الكروت ===== */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== التقويم ===== */
+#calendarContainer {
+  padding: 30px;
+  text-align: center;
+}
+
+#calendarContainer ul {
+  list-style: none;
+  padding: 0;
+}
+
+#calendarContainer li {
+  background: #161b22;
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 10px;
+  width: 300px;
+  font-size: 16px;
+  box-shadow: 0 0 15px rgba(30,111,140,0.3);
+  transition: 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+#calendarContainer li:hover {
+  background: #1E6F8C;
+  box-shadow: 0 0 20px rgba(30,111,140,0.8);
+  color: #fff;
+}
+
+/* ===== تفاصيل الكورس / الملزمة ===== */
+#courseDetails, #bookletDetails {
+  padding: 30px;
+  text-align: center;
+}
+
+iframe {
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 0 25px rgba(30,111,140,0.6);
+}
+.card {
+  background: #161b22;
+  border-radius: 12px;
+  padding: 15px;
+  width: 260px;
+  text-align: center;
+  color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 15px rgba(30,111,140,0.3);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;   /* يضمن تناسق الصورة بدون تمدد مشوه */
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+/* الهواتف */
+@media (max-width: 600px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  iframe {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+/* التابلت */
+@media (min-width: 601px) and (max-width: 1024px) {
+  main {
+    justify-content: center;
+  }
+
+  .card {
+    width: 45%;
+  }
+
+  iframe {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+/* الحاسبة */
+/* الحاسبة / اللابتوب */
+@media (min-width: 1025px) {
+  main {
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .card {
+    width: 260px; /* حجم ثابت ومرتب */
+  }
+
+  iframe {
+    width: 100%;
+    height: 400px;
+  }
+}
+/* جدول الامتحانات */
+.exam-table-container {
+  overflow-x: auto;
+  margin: 20px;
+}
+
+.exam-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(22, 27, 34, 0.9);
+  box-shadow: 0 0 15px rgba(30,111,140,0.5);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.exam-table th, .exam-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #2a2f38;
+  color: #fff;
+}
+
+.exam-table th {
+  background: #1E6F8C;
+  color: #fff;
+  font-weight: bold;
+}
+
+.exam-table tr:hover {
+  background: rgba(207, 174, 112, 0.1);
+}
+
+/* الروابط */
+.exam-table a {
+  color: #1E6F8C;
+  font-weight: bold;
+  text-decoration: none;
+}
+.exam-table a:hover {
+  color: #CFAE70;
+  text-shadow: 0 0 10px rgba(207,174,112,0.7);
+}
+
+/* خلفية متحركة (تفاعلية) */
+.bg-animated {
+  background: linear-gradient(-45deg, #0d1117, #161b22, #1E6F8C, #0d1117);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* خلفية متحركة متفاعلة لكل الصفحات */
+.bg-animated {
+  background: linear-gradient(-45deg, #0d1117, #161b22, #1E6F8C, #0d1117);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  min-height: 100vh;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.bg-animated {
+  background: linear-gradient(-45deg, #0d1117, #161b22, #1E6F8C, #0d1117);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  min-height: 100vh;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.bg-animated {
+  background: linear-gradient(-45deg, #0d1117, #161b22, #1E6F8C, #0d1117);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  min-height: 100vh;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

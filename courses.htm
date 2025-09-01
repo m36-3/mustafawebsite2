@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>المنصة التعليمية - جميع الدورات</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body class="bg-animated">
+
+  <header>
+    <h1>📚 جميع الدورات</h1>
+    <nav>
+      <a href="index.html">الرئيسية</a>
+      <a href="courses.html">الدورات</a>
+      <a href="booklets.html">الملازم</a>
+      <a href="exams.html">التقويم</a>
+    </nav>
+  </header>
+
+  <section class="filters">
+    <input type="text" id="searchInput" placeholder="ابحث عن دورة...">
+    <select id="filterStage">
+      <option value="">الكل</option>
+      <option value="مبتدئ">مبتدئ</option>
+      <option value="متوسط">متوسط</option>
+      <option value="متقدم">متقدم</option>
+    </select>
+    <select id="filterCategory">
+      <option value="">كل التصنيفات</option>
+      <option value="طب">طب</option>
+      <option value="هندسة">هندسة</option>
+      <option value="علوم">علوم</option>
+    </select>
+    <button onclick="filterCourses()">بحث</button>
+  </section>
+
+  <main id="coursesContainer">
+    <!-- الكورسات تملأ من JS -->
+  </main>
+</body>
+</html>
