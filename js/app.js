@@ -1,41 +1,43 @@
-// =========================
 // بيانات دورات وهمية + دروس
-// =========================
+
 const courses = [
   {
     id: 1,
-    title: "أساسيات التمريض",
-    category: "طب",
-    stage: "مبتدئ",
-    desc: "تعلم مبادئ التمريض.",
-    image: "https://via.placeholder.com/250x150?text=تمريض",
+    title: " أساسيات العناية",
+    category: "عناية",
+    stage: "مرحلة ثالثة",
+    desc: "كورس شرح مادة العناية للمرحلة الثالثة",
+    image: "n.png",
     lessons: [
-      { title: "مقدمة في التمريض", video: "https://www.youtube.com/embed/ysz5S6PUM-U" },
-      { title: "أدوات التمريض", video: "https://www.youtube.com/embed/ScMzIvxBSi4" }
+      { title: "Intensive care unit", video: "https://www.youtube.com/embed/ysz5S6PUM-U" },
+      { title: "Post-anesthesia care unit (PACU)", video: "https://www.youtube.com/embed/ysz5S6PUM-U" },
+      { title: "Oxygen therapy in ICU", video: "https://www.youtube.com/embed/ScMzIvxBSi4" }
     ]
+    
   },
   {
     id: 2,
-    title: "الهندسة الميكانيكية",
-    category: "هندسة",
-    stage: "متوسط",
-    desc: "مقدمة في الميكانيكا.",
-    image: "https://via.placeholder.com/250x150?text=ميكانيكا",
+    title: "التخدير النظري",
+    category: "تخدير",
+    stage: "مرحلة الثالثة ",
+    desc: "كورس شرح مادة التخدير النظري للمرحلة الثالثة",
+    image: "an.png",
     lessons: [
-      { title: "مقدمة عن القوى", video: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-      { title: "الطاقة الحركية", video: "https://www.youtube.com/embed/kJQP7kiw5Fk" }
+      { title: "التخدير الموضعي", video: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+      { title: "امراض الكلى والتخدير", video: "https://www.youtube.com/embed/kJQP7kiw5Fk" },
+      { title: "امراض الكبد والتخدير", video: "https://www.youtube.com/embed/kJQP7kiw5Fk" }
     ]
   },
   {
     id: 3,
-    title: "الكيمياء العامة",
-    category: "علوم",
-    stage: "متقدم",
-    desc: "مفاهيم متقدمة في الكيمياء.",
-    image: "https://via.placeholder.com/250x150?text=كيمياء",
+    title: "الاجهزة نظري",
+    category: "اجهزة",
+    stage: "المرحلة الثالثة",
+    desc: "كورس شرح مادة الاجهزة النظري للمرحلة الثالثة",
+    image: "a.png",
     lessons: [
-      { title: "مقدمة عن الذرات", video: "https://www.youtube.com/embed/1w7OgIMMRc4" },
-      { title: "التفاعلات الكيميائية", video: "https://www.youtube.com/embed/9bZkp7q19f0" }
+      { title: "مقدمة  ", video: "https://www.youtube.com/embed/1w7OgIMMRc4" },
+      { title: "التفاعلات ", video: "https://www.youtube.com/embed/9bZkp7q19f0" }
     ]
   }
 ];
@@ -46,21 +48,48 @@ const courses = [
 const booklets = [
   {
     id: 1,
-    title: "ملزمة التمريض",
-    teacher: "د. هدى محمد",
-    stage: "المرحلة الأولى",
-    number: "B001",
-    subject: "تمريض",
-    file: "files/nursing.pdf"
+    title: " الاجهزة نظري",
+    teacher: "دكتور ميثم",
+    stage: "المرحلة الثالثة",
+    number: "1",
+    subject: "اجهزة",
+    file: "files/a1.pdf"
+  },
+{
+    id: 1,
+    title: " الاجهزة نظري",
+    teacher: "دكتور ميثم",
+    stage: "المرحلة الثالثة",
+    number: "1",
+    subject: "اجهزة",
+    file: "files/a1.pdf"
   },
   {
-    id: 2,
-    title: "ملزمة الميكانيكا",
-    teacher: "د. علي حسين",
-    stage: "المرحلة الثانية",
-    number: "B002",
-    subject: "ميكانيكا",
-    file: "files/mechanics.pdf"
+    id: 1,
+    title: " الاجهزة نظري",
+    teacher: "دكتور ميثم",
+    stage: "المرحلة الثالثة",
+    number: "2",
+    subject: "اجهزة",
+    file: "files/a2.pdf"
+  },
+  {
+    id: 1,
+    title: " الاجهزة نظري",
+    teacher: "دكتور ميثم",
+    stage: "المرحلة الثالثة",
+    number: "3",
+    subject: "اجهزة",
+    file: "files/a3.pdf"
+  },
+  {
+    id: 1,
+    title: " عناية عملي",
+    teacher: "دكتور عادل",
+    stage: "المرحلة الثالثة",
+    number: "1,2,3",
+    subject: "عناية عملي",
+    file: "files/m123.pdf"
   }
 ];
 
@@ -71,76 +100,77 @@ const exams = [
   {
     date: "2025-09-01",
     day: "الإثنين",
-    name: "امتحان برمجة 1",
-    doctor: "د. أحمد محمد",
-    subject: "برمجة",
-    booklet: "files/programming1_exam.pdf",
+    name: "الاجهزة نظري",
+    doctor: "دكتور ميثم",
+    subject: "اجهزة",
+    booklet: "files/a1.pdf",
     course: "course.html?id=1"
   },
   {
     date: "2025-09-05",
     day: "الخميس",
-    name: "امتحان قواعد البيانات",
-    doctor: "د. علي حسن",
-    subject: "قواعد البيانات",
-    booklet: "files/db_exam.pdf",
-    course: "course.html?id=2"
+    name: "الاجهزة نظري",
+    doctor: "دكتور ميثم",
+    subject: "اجهزة",
+    booklet: "files/a1.pdf",
+    course: "course.html?id=1"
   },
   {
     date: "2025-09-08",
     day: "الأحد",
-    name: "امتحان رياضيات 2",
-    doctor: "د. هبة عبد الله",
-    subject: "رياضيات",
-    booklet: "files/math2_exam.pdf",
-    course: "course.html?id=3"
+    name: "الاجهزة نظري",
+    doctor: "دكتور ميثم",
+    subject: "اجهزة",
+    booklet: "files/a2.pdf",
+    course: "course.html?id=1"
   },
   {
     date: "2025-09-12",
     day: "الخميس",
-    name: "امتحان شبكات الحاسوب",
-    doctor: "د. سامر العزاوي",
-    subject: "شبكات",
-    booklet: null,
-    course: "course.html?id=4"
+    name: "الاجهزة نظري",
+    doctor: "دكتور ميثم",
+    subject: "اجهزة",
+    booklet: "files/a3.pdf",
+    course: "course.html?id=1"
   },
   {
     date: "2025-09-15",
     day: "الإثنين",
-    name: "امتحان خوارزميات",
-    doctor: "د. منى كامل",
-    subject: "خوارزميات",
-    booklet: "files/algorithms_exam.pdf",
-    course: null
+    name: "عناية عملي",
+    doctor: "دكتور عادل",
+    subject: "عناية عملي",
+    booklet: "files/m123.pdf",
+    course: "course.html?id=1"
   },
   {
     date: "2025-09-20",
     day: "السبت",
-    name: "امتحان هندسة برمجيات",
-    doctor: "د. فاضل نوري",
-    subject: "هندسة برمجيات",
-    booklet: "files/se_exam.pdf",
-    course: "course.html?id=5"
+    name: "عناية عملي",
+    doctor: "دكتور عادل",
+    subject: "عناية عملي",
+    booklet: "files/m123.pdf",
+    course: "course.html?id=1"
   },
   {
     date: "2025-09-25",
     day: "الخميس",
-    name: "امتحان أنظمة تشغيل",
-    doctor: "د. ليلى جاسم",
-    subject: "أنظمة تشغيل",
-    booklet: null,
-    course: "course.html?id=6"
+    name: "عناية عملي",
+    doctor: "دكتور عادل",
+    subject: "عناية عملي",
+    booklet: "files/m123.pdf",
+    course: "course.html?id=1"
   },
   {
     date: "2025-09-30",
     day: "الثلاثاء",
-    name: "امتحان الذكاء الاصطناعي",
-    doctor: "د. محمود كريم",
-    subject: "ذكاء اصطناعي",
-    booklet: "files/ai_exam.pdf",
-    course: "course.html?id=7"
+    name: "عناية عملي",
+    doctor: "دكتور عادل",
+    subject: "عناية عملي",
+    booklet: "files/m123.pdf",
+    course: "course.html?id=1"
   }
 ];
+
 
 // =========================
 // عرض التقويم
