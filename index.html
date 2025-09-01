@@ -2,13 +2,14 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>المنصة التعليمية - الرئيسية</title>
+  <title>بيت الحكمة-المدرسة المستنصرية</title>
+   
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="js/app.js" defer></script>
 </head>
 <body class="bg-animated">
   <header>
-    <h1>📚 بيت الحكمة</h1>
+    <h1>بيت الحكمة-المدرسة المستنصرية</h1>
     <nav>
       <a href="index.html">الرئيسية</a>
       <a href="courses.html">الدورات</a>
@@ -18,23 +19,23 @@
   </header>
 
   <section class="hero">
-    <h2>منصتك التعليمية التفاعلية</h2>
-    <p>اكتشف الدورات، الملازم، والتقويم الأكاديمي بسهولة</p>
+    <h2>اهلا بك في المدرسة المستنصرية</h2>
+    <p>حيث نوفر لك كل ما تحتاجه في مسيرتك الدراسية الجامعية </p>
   </section>
 
   <section class="filters">
-    <input type="text" id="searchInput" placeholder="ابحث عن دورة...">
+    <input type="text" id="searchInput" placeholder="ابحث عن ماتحتاجه ...">
+    <select id="filterCategory">
+      <option value="">تنصيف محتويات</option>
+      <option value="دورة">دورة</option>
+      <option value="ملزمة">ملزمة</option>
+      <option value="اسئلة">اسئلة</option>
+    </select>
     <select id="filterStage">
       <option value="">الكل</option>
-      <option value="مبتدئ">مبتدئ</option>
-      <option value="متوسط">متوسط</option>
-      <option value="متقدم">متقدم</option>
-    </select>
-    <select id="filterCategory">
-      <option value="">كل التصنيفات</option>
-      <option value="طب">طب</option>
-      <option value="هندسة">هندسة</option>
-      <option value="علوم">علوم</option>
+      <option value="كورس اول">كورس اول</option>
+      <option value="كورس ثاني">كورس ثاني</option>
+      <option value="عملي">تدريب عملي</option>
     </select>
     <button onclick="filterCourses()">بحث</button>
   </section>
@@ -44,3 +45,4 @@
   </main>
 </body>
 </html>
+
