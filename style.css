@@ -1,0 +1,166 @@
+:root{
+  --gold: #CFAE70;
+  --turquoise: #1E6F8C;
+  --emerald: #2E8A6D;
+  --ivory: #F5F1E3;
+  --dark: #0F1720;
+  --muted: #96a0a8;
+  --glass: rgba(255,255,255,0.03);
+  --glow: rgba(207,174,112,0.4);
+  --accent-text: #021012;
+}
+
+/* Basic reset */
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{height:100%}
+body{
+  font-family:"Tajawal", system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+  background: linear-gradient(180deg,#061016 0%,#08141c 100%);
+  color: var(--ivory);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Header */
+.site-header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 26px;
+  background: linear-gradient(135deg, rgba(207,174,112,0.06), rgba(30,111,140,0.04));
+  border-bottom:1px solid rgba(255,255,255,0.02);
+  position: sticky; top:0; z-index:50; backdrop-filter: blur(6px);
+  gap:18px;
+}
+.brand{ display:flex; align-items:center; gap:12px; }
+.logo-crest{
+  width:60px; height:60px; border-radius:12px;
+  object-fit:cover;
+  background: radial-gradient(circle at 30% 30%, var(--gold), transparent 35%), linear-gradient(180deg,var(--turquoise),var(--emerald));
+  box-shadow:0 10px 30px rgba(30,111,140,0.14),0 0 26px rgba(207,174,112,0.08);
+  transition: transform 0.3s, box-shadow .3s;
+}
+.logo-crest:hover{ transform: rotateY(10deg) scale(1.05); box-shadow:0 20px 50px rgba(207,174,112,0.12); }
+
+.brand-texts .brand-name{ font-size:1.2rem; font-weight:700; color:var(--ivory); }
+.brand-texts .brand-sub{ font-size:0.8rem; color:var(--muted); }
+
+/* Header actions and search box */
+.header-actions{ display:flex; gap:12px; align-items:center }
+.search-box{ display:flex; align-items:center; gap:6px; background: rgba(255,255,255,0.03); border-radius:12px; padding:6px; }
+.search-box .input{ border:none; background:transparent; color:var(--ivory); padding:8px 10px; width:300px }
+.search-btn{ border:none; background:linear-gradient(90deg,var(--turquoise),var(--emerald)); color:var(--accent-text); padding:8px 12px; border-radius:10px; cursor:pointer; box-shadow:0 8px 22px rgba(30,111,140,0.12) }
+.select{ padding:8px 10px; border-radius:10px; background:var(--glass); border:1px solid rgba(255,255,255,0.03); color:var(--ivory) }
+
+/* Buttons */
+.btn-primary{
+  background: linear-gradient(90deg, var(--turquoise), var(--emerald));
+  color:var(--accent-text); border:none; padding:8px 12px; border-radius:10px; font-weight:700;
+  box-shadow: 0 10px 20px rgba(30,111,140,0.12); cursor:pointer;
+}
+.btn-outline{
+  background: transparent; color:var(--ivory); padding:8px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.04);
+  cursor:pointer;
+}
+.btn-close{ background:transparent; border:none; color:var(--ivory); font-size:1.1rem; cursor:pointer }
+
+/* container & hero */
+.container{ max-width:1200px; margin:20px auto; padding:0 16px }
+.hero{ text-align:center; padding:28px 18px; border-radius:14px; margin-bottom:12px; background: linear-gradient(180deg, rgba(207,174,112,0.02), rgba(255,255,255,0.00)); box-shadow: 0 8px 40px rgba(0,0,0,0.6) }
+.hero h1{ font-size:2.2rem; color:var(--gold); text-shadow: 0 10px 30px rgba(207,174,112,0.06) }
+.muted{ color:var(--muted) }
+
+/* Grid & cards */
+.grid{ display:grid; gap:18px; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); }
+.pro-grid{ gap:22px; }
+
+/* animation entry */
+@keyframes entry {
+  from { opacity:0; transform: translateY(10px) scale(.995) }
+  to { opacity:1; transform: translateY(0) scale(1) }
+}
+
+/* card base */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005));
+  border-radius:12px; padding:10px; overflow:hidden;
+  border:1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.6);
+  animation: entry .35s ease both;
+  transition: transform .45s cubic-bezier(.2,.9,.2,1), box-shadow .35s;
+  perspective: 1200px;
+}
+
+/* Course Card specifics */
+.course{
+  border-radius:12px; overflow:hidden; position:relative; transform-style: preserve-3d;
+}
+.course:hover{
+  transform: rotateY(6deg) rotateX(2deg) translateY(-8px) scale(1.03);
+  box-shadow: 0 22px 60px rgba(0,0,0,0.7), 0 0 40px rgba(30,111,140,0.08);
+}
+
+/* thumb */
+.thumb{ width:100%; height:160px; display:block; background:#000; object-fit:cover; border-radius:10px; overflow:hidden; position:relative }
+.thumb img{ width:100%; height:100%; object-fit:cover; transition: transform .5s ease, filter .4s }
+.course:hover .thumb img{ transform: scale(1.06); filter: brightness(1.06) }
+.video-badge{ position:absolute; top:12px; left:12px; background: linear-gradient(90deg,var(--turquoise),var(--emerald)); color:var(--accent-text); padding:6px 10px; border-radius:8px; font-weight:700; box-shadow:0 8px 26px rgba(30,111,140,0.12) }
+
+/* body */
+.course-body{ padding:12px }
+.course-body h3{ margin:0; color:var(--turquoise); font-weight:800; font-size:1.05rem }
+.course-body p{ color:var(--muted); margin-top:8px; font-size:0.95rem; min-height:36px }
+.course-actions{ display:flex; justify-content:flex-end; margin-top:12px; gap:8px }
+
+/* no results */
+.no-results{ display:flex; justify-content:center; margin-top:22px }
+.no-results.hidden{ display:none }
+.no-results-card{ background: rgba(255,255,255,0.02); padding:20px; border-radius:12px; border:1px solid rgba(255,255,255,0.03) }
+
+/* modal */
+.modal{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background: rgba(2,6,23,0.6); z-index:80; padding:20px }
+.modal.hidden{ display:none }
+.modal-card{ width:920px; max-width:100%; padding:18px; border-radius:12px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); box-shadow: 0 14px 60px rgba(0,0,0,0.7) }
+.modal-header{ display:flex; justify-content:space-between; align-items:center }
+.modal-body{ margin-top:12px }
+
+/* forms */
+.input, textarea, .select {
+  width:100%; padding:10px; border-radius:10px; background:transparent; border:1px solid rgba(255,255,255,0.03); color:var(--ivory);
+  margin-top:8px;
+}
+.input-file{ width:100%; margin-top:8px; }
+
+/* lessons list for course page */
+.lessons-col{ width:320px; flex-shrink:0; }
+.lessons-list{ display:flex; flex-direction:column; gap:10px; margin-top:10px; max-height:65vh; overflow:auto; padding-right:6px; }
+.lesson-item{ padding:10px; border-radius:10px; background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0)); border:1px solid rgba(255,255,255,0.02); display:flex; justify-content:space-between; align-items:center; gap:8px; transition: transform .22s, box-shadow .22s; }
+.lesson-item:hover{ transform: translateX(6px); box-shadow: 0 12px 30px rgba(30,111,140,0.12); }
+
+/* player */
+.player-col{ flex:1; display:flex; flex-direction:column; gap:12px }
+.video-wrapper{ min-height:360px; border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; background: linear-gradient(180deg,#020409,#07121a); border:1px solid rgba(255,255,255,0.03); box-shadow:0 10px 40px rgba(0,0,0,0.6) }
+#video-wrapper iframe{ width:100%; height:100%; min-height:360px; border-radius:10px; transition: transform .4s }
+#video-wrapper iframe:hover{ transform: scale(1.02) }
+
+/* progress bar */
+.progress-bar{ width:100%; height:12px; background:rgba(255,255,255,0.03); border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.02) }
+.progress-fill{ height:100%; width:0%; background: linear-gradient(90deg,var(--turquoise),var(--emerald)); transition: width 0.3s linear; box-shadow:0 0 10px var(--glow) }
+
+/* notes */
+.notes-list{ margin-top:8px; display:flex; flex-direction:column; gap:8px }
+.notes-list .note{ padding:8px; border-radius:8px; background: rgba(30,111,140,0.04); border:1px solid rgba(30,111,140,0.06); color:var(--ivory) }
+
+/* highlight for search */
+.hl { background: linear-gradient(90deg, rgba(207,174,112,0.2), rgba(30,111,140,0.1)); color: var(--ivory); padding:0 6px; border-radius:4px; }
+
+/* toast */
+.toast{ position:fixed; left:50%; bottom:28px; transform:translateX(-50%); padding:12px 16px; border-radius:12px; background:linear-gradient(90deg,var(--turquoise),var(--emerald)); color:var(--accent-text); font-weight:700; box-shadow:0 12px 40px rgba(30,111,140,0.3); transition: transform .3s; z-index:90 }
+.toast.hidden{ display:none }
+
+/* responsive */
+@media (max-width:980px){
+  .site-header{ flex-direction:column; align-items:flex-start; gap:12px }
+  .lessons-col{ width:100%; order:2 }
+  .player-col{ order:1 }
+  .grid{ grid-template-columns: 1fr }
+  #video-wrapper iframe{ min-height:260px }
+}

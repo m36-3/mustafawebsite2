@@ -1,25 +1,96 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>تفاصيل الكورس</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <script src="js/app.js" defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>دورة — بيت الحكمة</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-animated">
+<body>
+  <header class="site-header small">
+    <div class="brand small-brand">
+      <img id="logo-img" class="logo-crest" src="شعار بيت الحكمة .png" alt="لوغو">
+      <div class="brand-texts">
+        <div class="brand-name">بيت الحكمة</div>
+        <div class="brand-sub" id="course-sub">تفاصيل الدورة</div>
+      </div>
+    </div>
 
-  <header>
-    <h1>📘 تفاصيل الكورس</h1>
-    <nav>
-      <a href="index.html">الرئيسية</a>
-      <a href="courses.html">الدورات</a>
-      <a href="booklets.html">الملازم</a>
-      <a href="exams.html">التقويم</a>
-    </nav>
+    <div class="header-actions">
+      <a href="index.html" class="btn-outline">← العودة</a>
+      <button id="btn-instructor-course" class="btn-outline">لوحة المبرمج</button>
+    </div>
   </header>
 
-  <main id="courseDetails">
-    <!-- تفاصيل الكورس تعرض من JS -->
+  <main class="container course-page" style="margin-top:18px;">
+    <section class="grid" style="grid-template-columns: 320px 1fr; gap:20px;">
+      <!-- قائمة الدروس -->
+      <aside class="lessons-col card">
+        <div style="display:flex;gap:12px;align-items:center;">
+          <img id="course-thumb" src="" alt="thumbnail" style="width:80px;height:60px;object-fit:cover;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,0.4)">
+          <div>
+            <h3 id="course-title">عنوان الدورة</h3>
+            <div id="course-desc" class="muted small"></div>
+          </div>
+        </div>
+        <hr style="margin:12px 0;">
+        <h4 style="margin-bottom:8px">الدروس</h4>
+        <div id="lessons-list" class="lessons-list"></div>
+      </aside>
+
+      <!-- Player -->
+      <div class="player-col">
+        <div class="player-card">
+          <h4 id="lesson-title">اختر درسًا للبدء</h4>
+          <div class="video-wrapper" id="video-wrapper">
+            <iframe id="video-iframe" src="" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+          </div>
+          <div class="player-bar">
+            <div class="progress-bar" aria-hidden="true">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:8px;margin-top:10px;align-items:center;">
+            <button id="btn-enroll-course" class="btn-primary">التحق بالدورة</button>
+            <button id="btn-add-note" class="btn-outline">أضف ملاحظة</button>
+          </div>
+
+          <div id="notes-area" style="margin-top:10px;">
+            <textarea id="note-text" class="input" placeholder="ملاحظة مرتبطة بالدرس..."></textarea>
+            <div id="notes-list" class="notes-list"></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
   </main>
+
+  <!-- Instructor modal reused on course page -->
+  <div id="modal-instructor" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>لوحة المبرمج — إضافة درس</h3>
+        <button id="close-instructor" class="btn-close" aria-label="إغلاق">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="form-add-lesson-course" class="instructor-form">
+          <label>عنوان الدرس
+            <input id="li-title-course" class="input" placeholder="مثال: شرح جهاز ECG" />
+          </label>
+          <label>رابط أو معرف يوتيوب
+            <input id="li-youtube-course" class="input" placeholder="https://www.youtube.com/watch?v=XXXXX أو XXXXX" />
+          </label>
+          <div class="row-end" style="margin-top:10px">
+            <button type="button" id="save-lesson-btn-course" class="btn-primary">أضف الدرس</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="script.js"></script>
 </body>
 </html>

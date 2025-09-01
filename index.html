@@ -1,46 +1,169 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>المنصة التعليمية - الرئيسية</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <script src="js/app.js" defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>بيت الحكمة - المنصة التعليمية</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-animated">
-  <header>
-    <h1>📚 بيت الحكمة</h1>
-    <nav>
-      <a href="index.html">الرئيسية</a>
-      <a href="courses.html">الدورات</a>
-      <a href="booklets.html">الملازم</a>
-      <a href="exams.html">التقويم</a>
-    </nav>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="brand">
+      <img id="logo-img" class="logo-crest" src="شعار بيت الحكمة .png" alt="لوغو">
+      <div class="brand-texts">
+        <div class="brand-name">بيت الحكمة</div>
+        <div class="brand-sub">منصة تعليمية عربية</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <div class="search-box">
+        <input id="search-input" type="search" placeholder="ابحث عن دورة أو كلمة مفتاحية..." class="input">
+        <button id="search-btn" class="search-btn" title="بحث">🔍</button>
+      </div>
+
+      <select id="filter-lang" class="select">
+        <option value="">الكل</option>
+        <option value="ar">العربية</option>
+        <option value="en">English</option>
+      </select>
+
+      <select id="filter-level" class="select">
+        <option value="">المستوى</option>
+        <option value="beginner">مبتدئ</option>
+        <option value="intermediate">متوسط</option>
+        <option value="advanced">متقدم</option>
+      </select>
+
+      <div class="actions">
+        <button id="btn-instructor" class="btn-outline">لوحة المبرمج</button>
+        <button id="btn-login" class="btn-primary">تسجيل / دخول</button>
+        <button id="btn-dashboard" class="btn-outline">لوحتي</button>
+      </div>
+    </div>
   </header>
 
-  <section class="hero">
-    <h2>منصتك التعليمية التفاعلية</h2>
-    <p>اكتشف الدورات، الملازم، والتقويم الأكاديمي بسهولة</p>
-  </section>
+  <main class="container">
+    <section class="hero glass">
+      <h1>بيت الحكمة — دار بغداد</h1>
+      <p class="muted">منصة تعليمية تفاعلية — شاهد فيديوهات يوتيوب، احفظ التقدّم، وأضف محتوى محليًا.</p>
+    </section>
 
-  <section class="filters">
-    <input type="text" id="searchInput" placeholder="ابحث عن دورة...">
-    <select id="filterStage">
-      <option value="">الكل</option>
-      <option value="مبتدئ">مبتدئ</option>
-      <option value="متوسط">متوسط</option>
-      <option value="متقدم">متقدم</option>
-    </select>
-    <select id="filterCategory">
-      <option value="">كل التصنيفات</option>
-      <option value="طب">طب</option>
-      <option value="هندسة">هندسة</option>
-      <option value="علوم">علوم</option>
-    </select>
-    <button onclick="filterCourses()">بحث</button>
-  </section>
+    <section class="catalog">
+      <div class="catalog-head">
+        <h2>جميع الدورات</h2>
+        <div id="catalog-count" class="muted"></div>
+      </div>
 
-  <main id="coursesContainer">
-    <!-- الكورسات تملأ من JS -->
+      <div id="courses-grid" class="grid pro-grid"></div>
+
+      <div id="no-results" class="no-results hidden">
+        <div class="no-results-card">
+          <h3>لم يتم العثور على نتائج</h3>
+          <p>جرّب مصطلحات أخرى أو أزل الفلاتر.</p>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <!-- Instructor Modal (سيُعرض بعد إدخال كلمة المرور) -->
+  <div id="modal-instructor" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>لوحة المبرمج — إدارة المحتوى</h3>
+        <button id="close-instructor" class="btn-close" aria-label="إغلاق">✕</button>
+        <!-- داخل modal-instructor -->
+        <button id="instructor-logout" class="btn-outline">خروج من لوحة المبرمج</button>
+
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <button id="show-add-course" class="btn-primary">إضافة دورة جديدة</button>
+          <button id="show-add-lesson" class="btn-outline">إضافة درس إلى دورة</button>
+        </div>
+
+        <div id="instructor-forms" style="margin-top:12px;">
+          <!-- Add Course Form -->
+          <form id="form-add-course" class="instructor-form hidden">
+            <label>عنوان الدورة
+              <input id="ci-title" class="input" placeholder="مثال: مبادئ العناية" />
+            </label>
+            <label>الوصف
+              <textarea id="ci-desc" class="input" placeholder="وصف مختصر"></textarea>
+            </label>
+            <div class="row">
+              <label>اللغة
+                <select id="ci-lang" class="select"><option value="ar">العربية</option><option value="en">English</option></select>
+              </label>
+              <label>المستوى
+                <select id="ci-level" class="select"><option value="beginner">مبتدئ</option><option value="intermediate">متوسط</option><option value="advanced">متقدم</option></select>
+              </label>
+              <label>اختر صورة مصغرة (من الخيارات الموجودة)
+                <select id="ci-thumb-select" class="select"></select>
+              </label>
+            </div>
+            <div class="row-end" style="margin-top:10px">
+              <button type="button" id="save-course-btn" class="btn-primary">حفظ الدورة</button>
+            </div>
+          </form>
+
+          <!-- Add Lesson Form -->
+          <form id="form-add-lesson" class="instructor-form hidden">
+            <label>اختر الدورة
+              <select id="select-course-for-lesson" class="select"></select>
+            </label>
+            <label>عنوان الدرس
+              <input id="li-title" class="input" placeholder="مثال: مقدمة عن الأجهزة" />
+            </label>
+            <label>رابط YouTube أو معرّف الفيديو
+              <input id="li-youtube" class="input" placeholder="مثال: https://www.youtube.com/watch?v=XXXXX أو XXXXX" />
+            </label>
+            <div class="row-end" style="margin-top:10px">
+              <button type="button" id="save-lesson-btn" class="btn-primary">أضف الدرس</button>
+            </div>
+          </form>
+
+          <div id="instructor-messages" class="muted small" style="margin-top:10px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="modal-login" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>تسجيل / دخول</h3>
+        <button id="close-login" class="btn-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <label>الاسم
+          <input id="user-name" class="input" placeholder="اسمك" />
+        </label>
+        <label>البريد الإلكتروني
+          <input id="user-email" class="input" placeholder="email@example.com" />
+        </label>
+        <div class="row-end" style="margin-top:10px">
+          <button id="btn-register" class="btn-primary">تسجيل / الدخول</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- دورة -->
+<input type="file" accept="image/*" onchange="handleCourseImageUpload(this)">
+<img id="ci-thumb-preview" src="" style="width:100px;height:80px;object-fit:cover">
+
+<!-- درس -->
+<input type="file" accept="image/*" onchange="handleLessonImageUpload(this)">
+<img id="li-thumb-preview" src="" style="width:100px;height:80px;object-fit:cover">
+<input type="hidden" id="li-thumb-input">
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
